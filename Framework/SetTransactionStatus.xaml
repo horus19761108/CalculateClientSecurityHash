@@ -271,7 +271,7 @@
                   <av:Size x:Key="ShapeSize">200,114.666666666667</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="This transition is executed if a system error occurred." DisplayName="Handle System Error" sap:VirtualizedContainerService.HintSize="732.666666666667,1822.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Sequence sap2010:Annotation.AnnotationText="This transition is executed if a system error occurred." DisplayName="Handle System Error" sap:VirtualizedContainerService.HintSize="732.666666666667,1953.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Boolean" Name="queueRetry" />
                 </Sequence.Variables>
@@ -589,11 +589,11 @@
                           <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[FilePath]</InOutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
-                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Sendemail workflow" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Common/Sendmail.xaml">
+                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Sendemail workflow(System Error)" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Common/Sendmail.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="x:String" x:Key="in_SendmailCredential">[in_Config("Sendmail_Credential").ToString]</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="in_DistinationAddress">[in_Config("DistinationAddress").ToString]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_Subject">System Exception</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Subject">System Error</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="in_Body">予期せぬエラーが発生しました</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[FilePath]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
@@ -617,7 +617,7 @@
                     </Catch>
                   </TryCatch.Catches>
                 </TryCatch>
-                <TryCatch DisplayName="Try catch CloseAllApplications" sap:VirtualizedContainerService.HintSize="690.666666666667,194" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                <TryCatch DisplayName="Try catch CloseAllApplications" sap:VirtualizedContainerService.HintSize="690.666666666667,324.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>

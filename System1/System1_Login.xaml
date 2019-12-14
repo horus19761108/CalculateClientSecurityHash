@@ -28,7 +28,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>718.666666666667,2753.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>718.666666666667,2838.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>System1_Login_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="22">
@@ -79,7 +79,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="【説明】&#xA;InternetExplorerにてACME_System1へログインする。&#xA;ログイン情報はOrchestratorまたはWindows資格情報より取得する。&#xA;ログイン情報に誤りがある場合は、所定のメールアドレスへエラーメッセージを送信する。&#xA;メール送信に用いるユーザ情報についても、Orchestratorから取得する。&#xA;【入力引数】&#xA;in_System1URL：ACME_System1のURL(String)&#xA;in_System1Credential：ACME_System1のCredential名(String)&#xA;in_SendMailCredential：メール送信用のCredential名(String)&#xA;in_DistinationAddress：宛先メールアドレス(String)&#xA;【出力引数】&#xA;無し&#xA;【前提条件】&#xA;ACME_System1からログオフ済みであること&#xA;ACME_System1の資格情報がOrchestratorに登録済みであること" DisplayName="System1_Login" sap:VirtualizedContainerService.HintSize="698.666666666667,2693.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="【説明】&#xA;InternetExplorerにてACME_System1へログインする。&#xA;ログイン情報はOrchestratorまたはWindows資格情報より取得する。&#xA;ログイン情報に誤りがある場合は、所定のメールアドレスへエラーメッセージを送信する。&#xA;メール送信に用いるユーザ情報についても、Orchestratorから取得する。&#xA;【入力引数】&#xA;in_System1URL：ACME_System1のURL(String)&#xA;in_System1Credential：ACME_System1のCredential名(String)&#xA;in_SendMailCredential：メール送信用のCredential名(String)&#xA;in_DistinationAddress：宛先メールアドレス(String)&#xA;【出力引数】&#xA;無し&#xA;【前提条件】&#xA;ACME_System1からログオフ済みであること&#xA;ACME_System1の資格情報がOrchestratorに登録済みであること" DisplayName="System1_Login" sap:VirtualizedContainerService.HintSize="698.666666666667,2738.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="username" />
       <Variable x:TypeArguments="ss:SecureString" Name="password" />
@@ -186,9 +186,9 @@
         </ui:Target>
       </ui:UiElementExists.Target>
     </ui:UiElementExists>
-    <If Condition="[Not LoginSuccesful]" DisplayName="条件分岐" sap:VirtualizedContainerService.HintSize="656.666666666667,846" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[Not LoginSuccesful]" DisplayName="条件分岐" sap:VirtualizedContainerService.HintSize="656.666666666667,891.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="ログインできなかった(要素が検出できなかった)場合" sap:VirtualizedContainerService.HintSize="480.666666666667,692" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="ログインできなかった(要素が検出できなかった)場合" sap:VirtualizedContainerService.HintSize="480.666666666667,737.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="errmsg" />
           </Sequence.Variables>
@@ -205,17 +205,24 @@
               <InArgument x:TypeArguments="x:String">["System1にログインできませんでした。"]</InArgument>
             </Assign.Value>
           </Assign>
-          <TryCatch DisplayName="トライ キャッチ" sap:VirtualizedContainerService.HintSize="438.666666666667,498" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch DisplayName="トライ キャッチ" sap:VirtualizedContainerService.HintSize="438.666666666667,416.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <TryCatch.Try>
-              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="エラーメール送信" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Common/Sendmail.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_SendmailCredential">[in_SendMailCredential]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_DistinationAddress">[in_DistinationAddress]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">エラーが発生しました</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">["こんにちは。"+vbCrLf+"ユーザー名またはメールアドレスが間違っています。確認のうえ、もう一度やり直してください。よろしくお願いします"]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_FilePath" />
-                </ui:InvokeWorkflowFile.Arguments>
-              </ui:InvokeWorkflowFile>
+              <Sequence DisplayName="シーケンス" sap:VirtualizedContainerService.HintSize="376,178.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Sendmail workflow(ログインエラー)" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Common/Sendmail.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_SendmailCredential">[in_SendMailCredential]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_DistinationAddress">[in_DistinationAddress]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_Subject">エラーが発生しました</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_Body">["こんにちは。"+vbCrLf+"ユーザー名またはメールアドレスが間違っています。確認のうえ、もう一度やり直してください。よろしくお願いします"]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_FilePath" />
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </Sequence>
             </TryCatch.Try>
             <TryCatch.Catches>
               <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
